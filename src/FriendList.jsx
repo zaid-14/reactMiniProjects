@@ -2,7 +2,11 @@ import React from "react";
 import { useState } from "react";
 
 const FriendList = () => {
-  const [friends, setFriends] = useState(["Yahya", "Aman", "Abhi"]);
+  const [friends, setFriends] = useState([
+    { id: 1, name: "Yahya", age: 10 },
+    { id: 2, name: "Aman", age: 25 },
+    { id: 3, name: "Raju", age: 24 },
+  ]);
   const [newFriend, setNewFriend] = useState("");
 
   function handleChange(event) {
@@ -10,12 +14,13 @@ const FriendList = () => {
   }
 
   function handleAddFriend() {
-    setFriends([...friends, newFriend]);
+    const newFriendObject = { id: Date.now(), name: newFriend, age: 20 };
+    setFriends([...friends, newFriendObject]);
     setNewFriend("");
   }
 
-  function handleRemove(nameToRemove) {
-    setFriends(friends.filter((friend) => friend != nameToRemove));
+  function handleRemove(idToRemove) {
+    setFriends(friends.filter((friend) => friend.id != idToRemove));
   }
 
   return (
@@ -30,11 +35,13 @@ const FriendList = () => {
       ) : (
         <ul>
           {friends.map((friend) => (
-            <li key={friend}>
-              {friend}{" "}
-              <button type="button" onClick={() => handleRemove(friend)}>
+            <li key={friend.id}>
+              <p>
+                Name: {friend.name}, Age: {friend.age} ---
+              
+              <button type="button" onClick={() => handleRemove(friend.id)}>
                 REMOVE
-              </button>
+              </button></p>
             </li>
           ))}
         </ul>
