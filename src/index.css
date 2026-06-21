@@ -1,0 +1,96 @@
+/* ==========================================================================
+   1. CSS RESET & BOX MODEL
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box; /* Includes padding/borders in element total width/height */
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================================================
+   2. DESIGN TOKENS (VARIABLES)
+   ========================================================================== */
+:root {
+  /* Colors */
+  --primary-color: #3b82f6;
+  --secondary-color: #025cec;
+  --bg-color: #f8fafc;
+  --text-color: #334155;
+  --white: #ffffff;
+  
+  /* Typography */
+  --font-main: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --line-height-base: 1.6;
+}
+
+/* ==========================================================================
+   3. BASE STYLES
+   ========================================================================== */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: var(--line-height-base);
+  min-height: 100vh;
+}
+
+/* Typography Resets */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--secondary-color);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+/* Media Resets */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Interactive Elements */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  cursor: pointer;
+  font: inherit;
+}
+
+/* ==========================================================================
+   4. LAYOUT UTILITIES
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;   /* Centers the layout container */
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
